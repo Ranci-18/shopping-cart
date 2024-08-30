@@ -4,13 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const largeImage = document.querySelector('.large-image');
+
+            // Add event listener to each thumbnail and update the large image
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', (event) => {
+                    const largeImageSrc = event.target.src;
+                    largeImage.src = largeImageSrc;
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    // Remove active class from all thumbnails
+                    thumbnails.forEach(img => img.classList.remove('active'));
+                    // Add active class to the clicked thumbnail
+                    thumbnail.classList.add('active');
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.querySelector('button');
+
+            btn.addEventListener('click', () => {
+                alert('Item added to cart');
+            });
+        });
+        
+    </script>
 </head>
 <body>
     <div id="root">
-        <div>
-            <img src="./assets/1.jpg" alt="pic1">
-            <img src="./assets/2.jpg" alt="pic2">
-            <img src="./assets/3.jpg" alt="pic3">
+        <div class="thumbnails">
+            <img src="./assets/1.jpg" alt="thumbnail1" class="thumbnail">
+            <img src="./assets/2.jpg" alt="thumbnail2" class="thumbnail">
+            <img src="./assets/3.jpg" alt="thumbnail3" class="thumbnail">
+        </div>
+        <div class="images">
+            <img src="./assets/1.jpg" alt="large image 1" class="large-image">
+        </div>
+        <div class="info">
+            <b>POLO RALPH</b>
+            <h1>Fashion Mens <br> Turtleneck Polos <br> Formal Long <br>Sleeve Vintage<br> Shirts-Blue</h1>
+            <small>Fashion Mens Turtleneck Polos Formal Long <br> Sleeve Vintage Shirts-Blue</small>
+            <p><b>ksh 965</b> <small class="discount">-25%</small><br><small class="original-price">KSh 1,705</small><br></p>
+            <label class="size">
+                <small><u>CHOOSE SIZE</u></small><br>
+                <input type="checkbox" id="s">
+                <label for="s">S</label>
+                <input type="checkbox" id="m">
+                <label for="m">M</label>
+                <input type="checkbox" id="l">
+                <label for="l">L</label>
+                <input type="checkbox" id="xl">
+                <label for="xl">XL</label>
+                <input type="checkbox" id="xxl">
+                <label for="xxl">XXL</label>
+            </label>
+            <button>ADD TO CART</button>
         </div>
     </div>
 </body>
